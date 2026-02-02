@@ -1,0 +1,45 @@
+---
+alwaysApply: false
+---
+# ワークフロー (WORKFLOW)
+
+## Rules for using Cursor's Plan feature
+- First, propose a branch name
+- Do not perform git operations
+
+## Commit Message Rules
+
+Please create commit messages according to the following examples.
+Write in Japanese.
+Write in a way that is understandable to junior engineers.
+Include commands used, if any.
+Include reference code (links or sample code) if there is anything worth noting.
+
+### Examples
+
+**Simple change:**
+
+```
+[変更内容の簡潔なタイトル]
+
+- [具体的な変更点1]
+- [具体的な変更点2]
+- [技術的な説明や仕組みの説明（必要に応じて）]
+```
+
+**Complex change:**
+
+```
+[変更内容の簡潔なタイトル]
+
+- [具体的な変更点1]
+- [具体的な変更点2]
+- [技術的な説明や仕組みの説明（必要に応じて）]
+
+[使用したコマンド（必要な時のみ）:]
+- [コマンド1]
+- [コマンド2]
+
+[参考コード（必要な時のみ）:]
+- [参考リンクやコード例]
+```

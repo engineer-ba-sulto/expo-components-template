@@ -1,0 +1,86 @@
+---
+alwaysApply: false
+---
+# コーディング規約 (CONVENTIONS)
+
+## File Naming Conventions
+
+### Expo Router
+- lowercase, special names
+- `_layout.tsx`, `index.tsx`, `[id].tsx` (dynamic routes), `+not-found.tsx`
+
+### Components
+- PascalCase
+- `UserProfile.tsx`, `ProductCard.tsx`, `SignInButton.tsx`
+
+## Export Default Function Rules
+
+Always use `export default function` for React components and main functions.
+
+### React Components
+- Use `export default function` for all React components
+- This ensures consistent import/export patterns across the codebase
+- Makes components easier to import and use
+
+```typescript
+// ✅ Correct
+export default function WaitlistForm() {
+  return <div>Waitlist Form</div>;
+}
+
+// ❌ Avoid
+const WaitlistForm = () => {
+  return <div>Waitlist Form</div>;
+};
+export default WaitlistForm;
+```
+
+### Main Functions
+- Use `export default function` for main functions in utility files
+- This provides clear entry points for modules
+- Improves code readability and maintainability
+
+```typescript
+// ✅ Correct
+export default function processUserData(data: UserData) {
+  // processing logic
+}
+
+// ❌ Avoid
+const processUserData = (data: UserData) => {
+  // processing logic
+};
+export default processUserData;
+```
+
+## Other Conventions
+
+### Hooks
+- camelCase, starting with 'use'
+- `useAuth.ts`, `useApi.ts`, `useLocalStorage.ts`
+
+### Types
+- feature name + purpose
+- `auth.ts`, `user.ts`, `api.ts`
+- **When Zod schemas exist, generate type definitions from Zod schemas**
+- Use `z.infer<typeof schema>` instead of hardcoding
+- Place type definitions in `src/types/` and import Zod schemas to generate types
+
+### Zod Schemas (Validation)
+- camelCase. Suffix with `.schema.ts`. Located in `src/zod/`. Schema objects should be camelCase and suffixed with `Schema`.
+- `login.schema.ts`, `updateUser.schema.ts` (defines `loginSchema`, `updateUserSchema`)
+- **Serves as the single source of truth for type definitions**
+- When schemas are changed, type definitions generated with `z.infer` are automatically updated
+- Avoid duplication of type definitions through hardcoding
+
+### Database Schemas (Drizzle)
+- camelCase. Suffix with `Schema.ts`. Located in `src/drizzle/schema/`. Tables should be plural camelCase and suffixed with `Table`. Tables should be defined in the schema file.
+- `userSchema.ts`, `productSchema.ts` (defines `usersTable`, `productsTable` tables)
+
+### Utils/Lib
+- camelCase. Group by feature.
+- `authUtils.ts`, `validation.ts`, `dateFormatting.ts`
+
+### Providers
+- PascalCase + Provider
+- `AuthProvider.tsx`, `ThemeProvider.tsx`

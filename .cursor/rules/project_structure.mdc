@@ -1,0 +1,40 @@
+---
+alwaysApply: false
+---
+# プロジェクト構造 (PROJECT_STRUCTURE)
+
+## Responsibility Separation Patterns
+
+Use the following directory structure for logic separation:
+- Routing & Pages -> `app/` (Expo Router)
+- UI logic -> `hooks/`, `components/`
+- Business logic -> `utils/`
+- State management -> `providers/`
+- Never mix view logic and business logic directly in page components.
+- Use dependency injection and clear separation of concerns to avoid tight coupling.
+
+## Project Structure
+
+```
+src/
+├── app/                   # Expo Router: pages, layouts, route handlers
+├── components/            # Reusable UI components
+│   ├── liquid-glass/      # Example: Components for a specific feature
+│   ├── screens/           # Example: Components used only in specific screens
+│   ├── shared/            # Example: Components used in multiple screens
+│   └── ui/                # Generic, reusable UI components (e.g., Button, Input)
+├── constants/             # Site-wide constants and configuration
+├── drizzle/               # Drizzle ORM: database client, schema, migrations
+│   ├── migrations/        # Database migration files
+│   ├── schema/            # Drizzle schema definitions
+│   └── db.ts              # Drizzle client instance
+├── hooks/                 # Custom React hooks (e.g., useAuth, use-form-state)
+├── lib/                   # Business logic, helpers, and external service clients
+│   ├── auth/              # Authentication logic (e.g., Better Auth integration)
+│   ├── api/               # API client utilities and API call functions
+│   ├── utils.ts           # Utility functions
+│   └── date.ts            # Date utility functions
+├── providers/             # React Context providers (e.g., ThemeProvider, AuthProvider)
+├── types/                 # TypeScript type definitions
+└── zod/                   # Zod validation schemas
+```
