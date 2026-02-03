@@ -1,50 +1,40 @@
-# Welcome to your Expo app 👋
+# Expo Components Template
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+このリポジトリは、Expo + React Native で作成した UI コンポーネントを複数アプリで再利用できるように整備するためのテンプレートです。
+ベースとなるアプリを起動しながら、`src/components` 以下に格納されたコンポーネントの UI と API を検証できます。
 
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
+## セットアップ
+1. 依存関係をインストール
 
    ```bash
-   npx expo start
+   bun install
    ```
 
-In the output, you'll find options to open the app in a
+2. 開発サーバーを起動
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   bun run start
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+   Expo CLI のプロンプトから `i` `a` `w` を入力すると、iOS / Android / Web それぞれで動作確認できます。
 
-## Get a fresh project
+## プロジェクトスクリプト
+- `bun run ios` / `bun run android` / `bun run web`: 各プラットフォーム専用で Expo を起動。
+- `bun run lint:fix`: Biome によるフォーマット + 静的解析。
+- `bun run typecheck`: `tsc --noEmit` で型安全性を確認。
+- `bun run reset-project`: 初期テンプレートを `app-example` へ移動し、空の `app` ディレクトリを再生成。
 
-When you're ready, run:
+## コンポーネントドキュメント
+作成済みコンポーネントは個別の README に詳細な使い方をまとめています。
+汎用コンポーネントを利用する場合は以下を参照してください。
 
-```bash
-npm run reset-project
-```
+- [Calendar Strip](src/components/calendar-strip/README.md): 横スクロール式カレンダー UI の概要、フック、Props、挙動を説明。
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+必要に応じて他のコンポーネント README もこのセクションに追加し、利用者が迷わず該当ドキュメントへ辿り着けるようにしてください。
 
-## Learn more
+## 推奨ワークフロー
+1. `src/components/<component-name>` に UI・フック・Story などを実装。
+2. 同ディレクトリに README を作成し、Props や拡張方法を記述。
+3. このルート README の「コンポーネントドキュメント」セクションへリンクを追加して公開準備を整えます。
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+このルールを守ることで、チーム全体が共通のコンポーネントカタログを参照でき、アプリ間での再利用性が高まります。
